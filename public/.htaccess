@@ -1,0 +1,54 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Do not rewrite challenges or reverse proxy paths
+  RewriteCond %{REQUEST_URI} ^/challenges [NC]
+  RewriteRule ^ - [L]
+
+  # If an actual file or directory exists, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback all other URLs to index.html for Vue SPA routing
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Correct MIME Types
+<IfModule mod_mime.c>
+  AddType text/html .html
+  AddType text/css .css
+  AddType application/javascript .js .mjs
+  AddType application/json .json
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType video/mp4 .mp4
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Caching & Range Request Headers
+<IfModule mod_headers.c>
+  # Enable byte-range support for video streaming (P1140574.mp4)
+  Header set Accept-Ranges bytes
+
+  # Vite hashed assets: cache for 1 year
+  <FilesMatch "\.(js|css|woff2|webp|svg)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+
+  # index.html: no-cache so browser always checks for new builds
+  <FilesMatch "index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
+
+# Gzip / Deflate Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Prevent directory indexing
+Options -Indexes
