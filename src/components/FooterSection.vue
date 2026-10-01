@@ -47,31 +47,6 @@ watch(scrollProgress, (p) => {
           <GithubIcon class="w-3.5 h-3.5" />
           <span>GitHub</span>
         </a>
-
-        <a 
-          href="/challenges/NCII-CSS" 
-          class="hover:text-blue-400 transition-colors py-1"
-        >
-          NCII-CSS Lab
-        </a>
-
-        <a 
-          href="https://sodayooo.dpdns.org/whiteboard" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="hover:text-blue-400 transition-colors py-1"
-        >
-          Whiteboard
-        </a>
-
-        <a 
-          href="https://git.sodayooo.dpdns.org" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="hover:text-blue-400 transition-colors py-1"
-        >
-          Gitea
-        </a>
       </div>
     </div>
 
