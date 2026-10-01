@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+//OHHHHHHHH a fancy background! Credits to benscott.dev for an amazing (and mesmerizing) idea! His code is open source btw
+
 interface Dot {
   x: number
   y: number

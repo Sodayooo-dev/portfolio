@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+//YEAAAAHHHH fancy scroll animations? these are free templates lol
+
 const props = withDefaults(
   defineProps<{
     videoSrc?: string
@@ -429,52 +431,6 @@ video {
   text-align: center;
 }
 
-.spacer {
-  height: 10vh;
-}
-
-.footer-content {
-  padding: 10rem 1.5rem;
-  text-align: center;
-  margin: 0 auto;
-  background: transparent;
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote {
-  margin-bottom: 3rem;
-  line-height: 1.85;
-  color: #f8fafc;
-  font-size: 1.2rem;
-  max-width: 44ch;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.quote p {
-  margin-bottom: 1.5rem;
-  color: #f8fafc;
-  text-align: center;
-}
-
-.divider {
-  width: 1px;
-  height: 80px;
-  background-color: rgba(255, 255, 255, 0.4);
-  margin: 3.5rem auto;
-}
-
-.footer-content .credits {
-  margin-top: 0;
-  color: #94a3b8;
-  text-align: center;
-}
 
 @media (max-width: 768px) {
   .title {

@@ -2,7 +2,7 @@
 import { useSmoothScroll } from '@/composables/useSmoothScroll'
 import {
   ExternalLink, 
-  Terminal, 
+  FolderGit,
   Layers,
 } from '@lucide/vue'
 import LinkedinIcon from '@/components/icons/LinkedinIcon.vue'
@@ -46,14 +46,16 @@ const { scrollTo } = useSmoothScroll()
             <ExternalLink class="w-3.5 h-3.5 opacity-60" />
           </a>
 
-          <button
-            type="button"
-            @click="scrollTo('#terminal', { offset: -70 })"
-            class="w-full sm:w-auto px-5 py-3.5 rounded-xl border border-dashed border-slate-700 bg-slate-900/40 hover:border-slate-500 text-slate-300 hover:text-white font-mono text-xs transition-colors flex items-center justify-center space-x-2 cursor-pointer min-h-11"
+          <a
+              href="https://github.com/Sodayooo-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-900/60 hover:bg-slate-800 active:bg-slate-700 text-slate-200 font-bold text-xs transition-colors flex items-center justify-center space-x-2 cursor-pointer min-h-11 shadow-xs"
           >
-            <Terminal class="w-3.5 h-3.5" />
-            <span>Run CLI Shell</span>
-          </button>
+            <FolderGit class="w-4 h-4 text-blue-400" />
+            <span>Github</span>
+            <ExternalLink class="w-3.5 h-3.5 opacity-60" />
+          </a>
         </div>
 
       </div>

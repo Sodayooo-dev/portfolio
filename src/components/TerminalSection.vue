@@ -34,6 +34,9 @@ function scrollToBottom() {
   })
 }
 
+//One might expect my terminal to be an AI agent in disguise, but nope. It's just a bunch of if-else statements
+//Good job peeking through my code though
+
 function executeCommand(rawCommand: string) {
   const cmd = rawCommand.trim()
   if (!cmd) return

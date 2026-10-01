@@ -5,31 +5,15 @@ import { Menu, X, Terminal, Layers, Cpu } from '@lucide/vue'
 
 const { scrollTo, lenis } = useSmoothScroll()
 
-const isDark = ref(false)
-const showNotifications = ref(false)
 const mobileMenuOpen = ref(false)
 const activeSection = ref('hero')
-const hasUnread = ref(true)
-
-function initTheme() {
-  document.documentElement.classList.add('dark')
-  isDark.value = true
-  localStorage.setItem('soda_portfolio_theme', 'dark')
-}
 
 function handleNavClick(target: string) {
   mobileMenuOpen.value = false
-  showNotifications.value = false
   scrollTo(target, { offset: -70 })
 }
 
-function toggleNotificationDropdown() {
-  showNotifications.value = !showNotifications.value
-  if (showNotifications.value) hasUnread.value = false
-}
-
 function closeDropdowns() {
-  showNotifications.value = false
   mobileMenuOpen.value = false
 }
 
@@ -62,7 +46,6 @@ function onScroll() {
 let unwatchLenis: (() => void) | null = null
 
 onMounted(() => {
-  initTheme()
   onScroll()
   window.addEventListener('keydown', onKeydown)
   window.addEventListener('scroll', onScroll, { passive: true })
@@ -169,7 +152,7 @@ onUnmounted(() => {
         class="w-full flex items-center space-x-2.5 py-3 px-3.5 rounded-xl text-left text-slate-200 hover:bg-slate-900 text-xs font-semibold min-h-[44px] cursor-pointer"
       >
         <Layers class="w-4 h-4 text-blue-400" />
-        <span>Projects &amp; Web Apps</span>
+        <span>Projects</span>
       </button>
 
       <button 
@@ -178,7 +161,7 @@ onUnmounted(() => {
         class="w-full flex items-center space-x-2.5 py-3 px-3.5 rounded-xl text-left text-slate-200 hover:bg-slate-900 text-xs font-semibold min-h-[44px] cursor-pointer"
       >
         <Cpu class="w-4 h-4 text-emerald-400" />
-        <span>Tech Stack &amp; Skills</span>
+        <span>Tech Stack</span>
       </button>
 
       <button 
@@ -187,7 +170,7 @@ onUnmounted(() => {
         class="w-full flex items-center space-x-2.5 py-3 px-3.5 rounded-xl text-left text-slate-200 hover:bg-slate-900 text-xs font-semibold min-h-[44px] cursor-pointer"
       >
         <Terminal class="w-4 h-4 text-amber-400" />
-        <span>Interactive CLI Shell</span>
+        <span>CLI Shell</span>
       </button>
     </div>
   </header>

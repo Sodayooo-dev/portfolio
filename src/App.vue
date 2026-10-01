@@ -2,8 +2,8 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useSmoothScroll } from '@/composables/useSmoothScroll'
 import ProximityDock from '@/components/ProximityDock.vue'
-import HeroSection from '@/components/HeroSection.vue'
-import CreativeMindSection from '@/components/CreativeMindSection.vue'
+import PersonalInfo from '@/components/PersonalInfo.vue'
+import Intro from '@/components/Intro.vue'
 import ProjectsSection from '@/components/ProjectsSection.vue'
 import TechStackSection from '@/components/TechStackSection.vue'
 import GalleryCarouselSection from '@/components/GalleryCarouselSection.vue'
@@ -13,6 +13,8 @@ import ConnectingDotsBackground from '@/components/ConnectingDotsBackground.vue'
 import FooterSection from '@/components/FooterSection.vue'
 
 const { init, destroy } = useSmoothScroll()
+
+//Wao so iniinspect mo talaga code ko?
 
 onMounted(() => {
   init()
@@ -38,8 +40,8 @@ onUnmounted(() => {
     <ProximityDock />
 
     <main id="main-content" class="relative z-10 flex-1 space-y-6 sm:space-y-10">
-      <HeroSection />
-      <CreativeMindSection />
+      <PersonalInfo />
+      <Intro />
       <ProjectsSection />
       <TechStackSection />
       <GalleryCarouselSection />

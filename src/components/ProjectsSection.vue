@@ -8,7 +8,6 @@ import {
   Cpu, 
   ArrowRight
 } from '@lucide/vue'
-import GithubIcon from '@/components/icons/GithubIcon.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -231,25 +230,11 @@ onUnmounted(() => {
             :class="{ 'pb-36 md:pb-52': index === projects.length - 1 }"
           >
             <div class="content max-w-xl space-y-4">
-              
+
               <div class="flex items-center space-x-3">
                 <span class="font-mono text-xs font-bold text-slate-400">
-                  0{{ index + 1 }} / 05
+                  0{{ index + 1 }} / 04
                 </span>
-                <span 
-                  class="px-2.5 py-0.5 rounded-full text-xs font-semibold border"
-                  :style="{ 
-                    backgroundColor: project.accentBg, 
-                    borderColor: project.accentBorder, 
-                    color: project.accentColor 
-                  }"
-                >
-                  {{ project.badge }}
-                </span>
-                <div class="flex items-center space-x-1.5 text-xs font-mono text-emerald-400 font-medium">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>{{ project.status }}</span>
-                </div>
               </div>
 
               <div>
@@ -277,7 +262,7 @@ onUnmounted(() => {
 
               <div class="space-y-2 pt-1">
                 <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold">
-                  Core Modules &amp; Verified Features
+                  Core Features
                 </div>
                 <ul class="grid grid-cols-1 gap-1.5 text-xs text-slate-300">
                   <li 
@@ -301,31 +286,6 @@ onUnmounted(() => {
                 </span>
               </div>
 
-              <div class="flex flex-wrap items-center gap-3 pt-3">
-                <a 
-                  :href="project.url" 
-                  :target="project.isExternal ? '_blank' : '_self'"
-                  :rel="project.isExternal ? 'noopener noreferrer' : ''"
-                  class="px-5 py-2.5 rounded-xl font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center space-x-2 min-h-11 text-white cursor-pointer"
-                  :style="{ backgroundColor: project.accentColor }"
-                >
-                  <span>Launch Webapp</span>
-                  <ExternalLink v-if="project.isExternal" class="w-3.5 h-3.5" />
-                  <ArrowRight v-else class="w-3.5 h-3.5" />
-                </a>
-
-                <a 
-                  v-if="project.github"
-                  :href="project.github"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-bold text-xs transition-colors flex items-center space-x-2 min-h-11 cursor-pointer"
-                >
-                  <GithubIcon class="w-4 h-4" />
-                  <span>View Source</span>
-                </a>
-              </div>
-
             </div>
 
             <div class="md:hidden pt-4 pb-8 mobile-project-card">
@@ -343,12 +303,10 @@ onUnmounted(() => {
                   <div class="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-black/30 pointer-events-none"></div>
                   <div class="absolute bottom-3 left-3 right-3 text-white font-mono text-xs flex justify-between items-center pointer-events-none">
                     <span class="font-bold truncate">{{ project.title }}</span>
-                    <span class="text-emerald-400 text-[10px]">{{ project.status }}</span>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
 
         </div>
@@ -372,21 +330,17 @@ onUnmounted(() => {
             <div class="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/20 to-black/40 pointer-events-none"></div>
 
             <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-              <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-white font-mono text-[11px] shadow-sm">
-                <span class="w-2 h-2 rounded-full animate-pulse" :style="{ backgroundColor: project.accentColor }"></span>
-                <span>{{ project.badge }}</span>
-              </div>
               <span class="px-2.5 py-1.5 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-slate-200 font-mono text-[11px] font-bold shadow-sm">
-                0{{ index + 1 }} / 05
+                0{{ index + 1 }} / 04
               </span>
             </div>
 
             <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/85 backdrop-blur-md border border-white/10 text-white flex items-center justify-between shadow-lg">
               <div class="min-w-0 pr-3">
                 <h4 class="font-bold text-xs sm:text-sm truncate text-white">{{ project.title }}</h4>
-                <p class="text-[10px] sm:text-[11px] font-mono text-slate-300 truncate mt-0.5">{{ project.tagline }}</p>
               </div>
               <a 
+                v-if="project.available"
                 :href="project.url" 
                 :target="project.isExternal ? '_blank' : '_self'"
                 :rel="project.isExternal ? 'noopener noreferrer' : ''"

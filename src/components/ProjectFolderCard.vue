@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { ProjectItem } from '@/data/projects'
-import { ExternalLink, Layers, CheckCircle2, Cpu, ArrowRight, ShieldCheck } from '@lucide/vue'
+import { ExternalLink, CheckCircle2, Cpu, ArrowRight } from '@lucide/vue'
 import GithubIcon from '@/components/icons/GithubIcon.vue'
 
 defineProps<{ project: ProjectItem }>()
@@ -29,15 +29,6 @@ function handleMouseLeave() {
   rotateX.value = 0
   rotateY.value = 0
 }
-
-const badgeColorClasses: Record<ProjectItem['badgeColor'], string> = {
-  blue:    'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800',
-  emerald: 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800',
-  purple:  'bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800',
-  amber:   'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800',
-  cyan:    'bg-cyan-50 text-cyan-700 border-cyan-200 dark:bg-cyan-950/60 dark:text-cyan-300 dark:border-cyan-800',
-  rose:    'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800',
-}
 </script>
 
 <template>
@@ -55,19 +46,6 @@ const badgeColorClasses: Record<ProjectItem['badgeColor'], string> = {
     class="project-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-blue-500/50 dark:hover:border-blue-400/50 flex flex-col justify-between transition-shadow duration-300"
   >
     <div>
-      <div class="flex items-center justify-between gap-2 mb-3">
-        <span 
-          class="px-2.5 py-0.5 rounded-full text-xs font-semibold border"
-          :class="badgeColorClasses[project.badgeColor] || badgeColorClasses.blue"
-        >
-          {{ project.badge }}
-        </span>
-
-        <div class="flex items-center space-x-1.5 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>{{ project.status }}</span>
-        </div>
-      </div>
 
       <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors leading-snug">
         {{ project.title }}
@@ -153,6 +131,7 @@ const badgeColorClasses: Record<ProjectItem['badgeColor'], string> = {
 
       <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between min-h-[44px] gap-2">
         <a 
+          v-if="project.available"
           :href="project.url" 
           :target="project.isExternal ? '_blank' : '_self'"
           :rel="project.isExternal ? 'noopener noreferrer' : ''"

@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+//this one I actually love the scroll effects
+
 const props = withDefaults(
   defineProps<{
     text?: string
@@ -43,25 +45,12 @@ let geometries: any[] = []
 let materials: any[] = []
 let textures: any[] = []
 
-async function getThree(): Promise<any> {
-  if (typeof window !== 'undefined' && (window as any).THREE) {
-    return (window as any).THREE
-  }
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script')
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
-    script.onload = () => resolve((window as any).THREE)
-    script.onerror = reject
-    document.head.appendChild(script)
-  })
-}
-
-onMounted(async () => {
-  await nextTick()
+onMounted(() => {
+  nextTick(() => {
   if (!canvasRef.value || !watermarkTextRef.value || !wrapRef.value) return
 
-  const THREE = await getThree()
-  if (!THREE || !canvasRef.value) return
+  const THREE = (window as any).THREE
+  if (!THREE) return
 
   st = ScrollTrigger.create({
     trigger: wrapRef.value,
@@ -206,6 +195,7 @@ onMounted(async () => {
   setTimeout(() => {
     ScrollTrigger.refresh()
   }, 250)
+  })
 })
 
 onUnmounted(() => {

@@ -14,16 +14,6 @@
     --accent-blue: #3b82f6;
   }
 
-  .dark {
-    --bg-primary: #080c14;
-    --bg-surface: #0f172a;
-    --bg-subtle: #1e293b;
-    --border-subtle: #1e293b;
-    --text-primary: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent-blue: #3b82f6;
-  }
-
   html {
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
@@ -43,21 +33,6 @@
     outline: 2px solid #2563eb;
     outline-offset: 2px;
   }
-}
-
-/* Blueprint Grid Background Pattern */
-.blueprint-grid {
-  background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-.dark .blueprint-grid {
-  background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 
 /* Custom Clean Scrollbar */
@@ -86,32 +61,4 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* 3D Card Perspective Utilities for RareUI Components */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* RareUI Notification Swing Keyframe */
-@keyframes rare-bell-swing {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(14deg); }
-  40% { transform: rotate(-12deg); }
-  60% { transform: rotate(8deg); }
-  80% { transform: rotate(-4deg); }
-  100% { transform: rotate(0deg); }
-}
-
-.animate-bell-swing {
-  animation: rare-bell-swing 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform-origin: top center;
 }
