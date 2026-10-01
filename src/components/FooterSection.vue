@@ -39,7 +39,7 @@ watch(scrollProgress, (p) => {
         </a>
 
         <a 
-          href="https://github.com/sodayooo" 
+          href="https://github.com/Sodayooo-dev"
           target="_blank" 
           rel="noopener noreferrer" 
           class="hover:text-blue-400 transition-colors flex items-center space-x-1 py-1"
