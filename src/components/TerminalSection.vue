@@ -10,7 +10,7 @@ let terminalCtx: gsap.Context | null = null
 
 interface TerminalEntry {
   text: string
-  type: 'system' | 'prompt' | 'info' | 'success' | 'error' | 'output'
+  type: 'system' | 'prompt' | 'info' | 'success' | 'error' | 'output' | 'download'
 }
 
 const inputCmd = ref('')
@@ -24,7 +24,7 @@ const entries = ref<TerminalEntry[]>([
   { text: 'Type "help" or click any quick command chip below to explore.', type: 'info' }
 ])
 
-const quickChips = ['help', 'whoami', 'projects', 'skills', 'ping sodayooo.dpdns.org', 'contact', 'clear']
+const quickChips = ['help', 'whoami', 'projects', 'skills', 'ping sodayooo.dpdns.org', 'contact', 'clear', 'downloadcv']
 
 function scrollToBottom() {
   nextTick(() => {
@@ -57,7 +57,8 @@ function executeCommand(rawCommand: string) {
   • skills        - Technical programming languages and DevOps tooling
   • ping <host>   - Test network reachability and round-trip time
   • contact       - LinkedIn profile and domain details
-  • clear         - Flush terminal scrollback buffer`
+  • clear         - Flush terminal scrollback buffer
+  • dowloadcv     - Downloads my curriculum vitae`
     })
   } else if (lower === 'whoami') {
     entries.value.push({
@@ -106,10 +107,27 @@ Computer Engineering Student`
     })
   } else if (lower === 'clear') {
     entries.value = []
+  } else if (lower.startsWith('downloadcv')) {
+    entries.value.push({
+      type: 'download',
+      text: 'Curriculum Vitae is downloading...'
+    })
+    const link = document.createElement('a')
+    link.href = '/files/JhezrielBarangancv.pdf'
+    link.download = 'JhezrielBarangancv.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   } else if (lower.startsWith('sudo')) {
-    entries.value.push({ type: 'error', text: 'guest is already granted standard simulation privileges. Root not required.' })
+    entries.value.push({
+      type: 'error',
+      text: 'guest is already granted standard simulation privileges. Root not required.'
+    })
   } else {
-    entries.value.push({ type: 'error', text: `zsh: command not found: "${cmd}". Type "help" to view valid commands.` })
+    entries.value.push({
+      type: 'error',
+      text: `zsh: command not found: "${cmd}". Type "help" to view valid commands.`
+    })
   }
 
   inputCmd.value = ''
