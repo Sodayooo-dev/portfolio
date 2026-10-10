@@ -434,7 +434,7 @@ video {
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 
   .subtitle {

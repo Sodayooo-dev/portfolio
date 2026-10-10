@@ -24,7 +24,7 @@ const entries = ref<TerminalEntry[]>([
   { text: 'Type "help" or click any quick command chip below to explore.', type: 'info' }
 ])
 
-const quickChips = ['help', 'whoami', 'projects', 'skills', 'ping sodayooo.dpdns.org', 'contact', 'clear', 'downloadcv']
+// const quickChips = ['help', 'whoami', 'projects', 'skills', 'ping sodayooo.dpdns.org', 'contact', 'clear', 'downloadcv']
 
 function scrollToBottom() {
   nextTick(() => {
@@ -189,26 +189,23 @@ onUnmounted(() => {
       </p>
     </div>
 
-    <!-- Quick Run Command Chips (R-03: min 44px tap targets for mobile) -->
-    <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
-      <span class="text-[11px] font-mono font-semibold text-slate-400 whitespace-nowrap mr-1 shrink-0">
-        Run:
-      </span>
-      <button 
-        v-for="chip in quickChips" 
-        :key="chip"
-        type="button"
-        @click="executeCommand(chip)"
-        class="px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-blue-600 hover:text-white text-slate-200 border border-slate-700/60 font-mono text-xs transition-colors cursor-pointer shrink-0 min-h-11 flex items-center justify-center active:scale-95"
-      >
-        {{ chip }}
-      </button>
-    </div>
+<!--    <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1 -mx-4 px-4 sm:mx-0 sm:px-0">-->
+<!--      <span class="text-[11px] font-mono font-semibold text-slate-400 whitespace-nowrap mr-1 shrink-0">-->
+<!--        Run:-->
+<!--      </span>-->
+<!--      <button -->
+<!--        v-for="chip in quickChips" -->
+<!--        :key="chip"-->
+<!--        type="button"-->
+<!--        @click="executeCommand(chip)"-->
+<!--        class="px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-blue-600 hover:text-white text-slate-200 border border-slate-700/60 font-mono text-xs transition-colors cursor-pointer shrink-0 min-h-11 flex items-center justify-center active:scale-95"-->
+<!--      >-->
+<!--        {{ chip }}-->
+<!--      </button>-->
+<!--    </div>-->
 
-    <!-- Main Terminal Window Container -->
     <div class="terminal-window-anim rounded-2xl border border-slate-800 bg-[#0a0f1d] text-slate-100 shadow-2xl overflow-hidden font-mono text-xs flex flex-col">
-      
-      <!-- Terminal Header / Titlebar -->
+
       <div class="bg-[#131b2e] px-4 py-2.5 flex items-center justify-between border-b border-slate-800 select-none">
         <div class="flex items-center space-x-2">
           <div class="w-3 h-3 rounded-full bg-rose-500"></div>
@@ -227,7 +224,6 @@ onUnmounted(() => {
         </button>
       </div>
 
-      <!-- Output Scroll Container -->
       <div 
         ref="terminalOutputRef"
         class="p-4 sm:p-6 space-y-2 h-64 sm:h-72 overflow-y-auto"
@@ -249,7 +245,6 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Interactive Input Form -->
       <form 
         @submit.prevent="executeCommand(inputCmd)"
         class="p-3 bg-[#0d1424] border-t border-slate-800 flex items-center space-x-2"
